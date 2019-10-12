@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.23)  11 OCT 2019 20:57
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/W32TeX) (preloaded format=xelatex 2018.4.23)  12 OCT 2019 14:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1468,7 +1468,8 @@ Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 92.
 Class revtex4-1 Info: cite was not loaded (OK!) on input line 92.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 92.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 92.
- (./mpltx_win7.aux)
+
+No file mpltx_win7.aux.
 \openout1 = `mpltx_win7.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
@@ -1489,7 +1490,7 @@ LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 92.
 LaTeX Font Info:    ... okay on input line 92.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 92.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 92.
- (c:/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
+(c:/texlive/2017/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 92.
@@ -1580,10 +1581,12 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 92.
 LaTeX Info: Redefining \pageref on input line 92.
 LaTeX Info: Redefining \nameref on input line 92.
- (./mpltx_win7.out) (./mpltx_win7.out)
 \@outlinefile=\write5
 \openout5 = `mpltx_win7.out'.
 
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1646,200 +1649,4 @@ Class revtex4-1 Info: Taking \maketitle back from hyperref on input line 92.
 .  This font family consists of the following NFSS series/shapes:
 .  
 . - 'normal' (m/n) with NFSS spec.: <->"SimSun/OT:script=hani;language=DFLT;"
-. - 'small caps'  (m/sc) with NFSS spec.: 
-.................................................
-
-Class revtex4-1 Warning: Assuming \noaffiliation for authors.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\songti' on input line 113.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 113.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 113.
-
-[1]
-
-Package natbib Warning: Citation `PhysRevB.96.144432' on page 2 undefined on input line 119.
-
-
-Package natbib Warning: Citation `PhysRevD.94.112002' on page 2 undefined on input line 120.
-
-
-Package natbib Warning: Citation `PhysRevA.96.042113' on page 2 undefined on input line 120.
-
-
-Package natbib Warning: Citation `2017arXiv170300670S' on page 2 undefined on input line 144.
-
-[2]
-LaTeX Font Info:    Try loading font information for U+msa on input line 160.
- (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 160.
- (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3]
-File: CNN.png Graphic file (type QTm)
- <use  "CNN.png" >
-File: cjlj.png Graphic file (type QTm)
- <use  "cjlj.png" >
-File: cnnn.png Graphic file (type QTm)
- <use  "cnnn.png" >
-File: cnv.png Graphic file (type QTm)
- <use  "cnv.png" >
-File: pool.png Graphic file (type QTm)
- <use  "pool.png" >
-
-LaTeX Warning: Reference `cnv' on page 4 undefined on input line 211.
-
-File: pca.jpg Graphic file (type QTm)
-<use  "pca.jpg" > [4] [5]
-File: QGP.png Graphic file (type QTm)
- <use  "QGP.png" >
-File: hz.png Graphic file (type QTm)
- <use  "hz.png" >
-
-Package natbib Warning: Citation `2013PhDT........31Q' on page 6 undefined on input line 256.
-
-
-Package natbib Warning: Citation `2010LanB...23..240H' on page 6 undefined on input line 262.
-
-[6]
-
-Package natbib Warning: Citation `PhysRevC.58.1671' on page 7 undefined on input line 268.
-
-[7]
-
-Package natbib Warning: Citation `PhysRevC.96.024908' on page 8 undefined on input line 276.
-
-
-Package natbib Warning: Citation `PhysRevLett.116.172302' on page 8 undefined on input line 276.
-
-
-Package natbib Warning: Citation `PhysRevC.96.024908' on page 8 undefined on input line 286.
-
-File: fnf.png Graphic file (type QTm)
-<use  "fnf.png" > [8]
-
-Package natbib Warning: Citation `PhysRevC.89.064910' on page 9 undefined on input line 310.
-
-
-Package natbib Warning: Citation `PhysRevC.72.064901' on page 9 undefined on input line 315.
-
-
-Package natbib Warning: Citation `PhysRevD.44.3501' on page 9 undefined on input line 316.
-
-File: sample.png Graphic file (type QTm)
-<use  "sample.png" > [9] [10]
-File: pcasample.png Graphic file (type QTm)
- <use  "pcasample.png" >
-File: pcaresults.png Graphic file (type QTm)
- <use  "pcaresults.png" >
-File: tzxl.png Graphic file (type QTm)
- <use  "tzxl.png" >
-File: qb.png Graphic file (type QTm)
- <use  "qb.png" >
-File: cs.png Graphic file (type QTm)
- <use  "cs.png" > [11]
-
-LaTeX Warning: Reference `table:1' on page 12 undefined on input line 381.
-
-[12]
-
-LaTeX Warning: Reference `table:2' on page 13 undefined on input line 384.
-
-File: sjwl.png Graphic file (type QTm)
-<use  "sjwl.png" > [13]
-No file mpltx_win7.bbl.
-\g__fontspec_family_SimHei_int=\count195
-.................................................
-. fontspec info: "no-font-shape"
-. 
-. Could not resolve font "SimHei/BI" (it probably doesn't exist).
-.................................................
-.................................................
-. fontspec info: "no-font-shape"
-. 
-. Could not resolve font "SimHei/B" (it probably doesn't exist).
-.................................................
-.................................................
-. fontspec info: "no-font-shape"
-. 
-. Could not resolve font "SimHei/I" (it probably doesn't exist).
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'SimHei(0)' created for font 'SimHei' with options
-. [Script={CJK}].
-.  
-.  This font family consists of the following NFSS series/shapes:
-.  
-. - 'normal' (m/n) with NFSS spec.: <->"SimHei/OT:script=hani;language=DFLT;"
-. - 'small caps'  (m/sc) with NFSS spec.: 
-.................................................
-
-LaTeX Font Warning: Font shape `TU/SimHei(0)/bx/n' undefined
-(Font)              using `TU/SimHei(0)/m/n' instead on input line 477.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\heiti' on input line 477.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 477.
-
-[14]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\heiti' on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\heiti' on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 487.
-
-[15]
-
-Package natbib Warning: There were undefined citations.
-
-[16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 492.
- (./mpltx_win7.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 492.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 492.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
- ) 
-Here is how much of TeX's memory you used:
- 29991 strings out of 493005
- 559336 string characters out of 6137956
- 627888 words of memory out of 5000000
- 33606 multiletter control sequences out of 15000+600000
- 21543 words of font info for 115 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 57i,15n,78p,10530b,696s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on mpltx_win7.pdf (16 pages).
+. - 'small caps'  (m/sc) with N

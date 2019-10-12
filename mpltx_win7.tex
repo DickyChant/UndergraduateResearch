@@ -298,8 +298,62 @@ C(\Delta\phi,\Delta\eta)=\frac{\sum_{events}S(\Delta\phi,\Delta\eta)}{\sum_{even
 \par
 相对论性重离子碰撞领域中已经存在许多成功的初态模型，动力学模型有基于色玻璃凝聚有效场论的基于碰撞参数的Glasma模型（IP-Glasma）,静态模型则有蒙特卡洛Glauber模型（MC-Glauber），都各自成功的解释了实验数据。而逐事件约化厚度核拓扑模型，则可以通过模型参数的选取，分别贴近不同的初态模型。
 \par
-
-
+假设一对碰撞核子A，B，沿着z轴碰撞，同时，记$\rho_{A,B}^{part}$为参与碰撞的非弹性碰撞部分。由此，每个碰撞核子的厚度可以用参与部分表示出来：
+\begin{equation}
+    T_{A,B}(x,y)=\int dz \rho_{A,B}^{part}(x,y,z)
+\end{equation}
+厚度函数的选取会在之后简述。\par
+一旦拥有了厚度函数，依照如下的原则，我们就可以构造熵作为初态。
+\begin{enumerate}
+    \item 程函近似有效：熵的产生来自于A和B的程函重合；
+    \item 存在一个标量场$f(T_A,T_B)$，将厚度转化成熵。
+\end{enumerate}
+具体来说，首先，标量场$f$应当正比于在中快度区间内流体热力学演化时刻产生的熵。
+\begin{equation}
+    f\propto dS/dy|_{\tau=\tau_0}
+\end{equation}
+它应当给出一个有效的对碰撞早期动力学的描述：并不一定来自于第一性原理的计算，但要满足物理限制。
+\par
+从来自相对论性重离子对撞机的超高中心度对撞数据，可以得出核子碰撞应该满足规模不变的性质：
+\begin{equation}
+    f(cT_A,cT_B)=cf(T_A,T_B)
+\end{equation}
+也就是说，N个1对1的碰撞的效应总和，在数学上应该和一个N对N的碰撞效应相同。\par
+因此，可选取如下的场$f$：
+\begin{equation}
+    f=T_R(p;T_A,T_B)=(\frac{T^p_A+T^P_B}{2})^{1/p}
+\end{equation}
+称为约化厚度。\par
+约化厚度场$f$可视为广义上的均值，其取值可以随着无量纲参数$p$的变化，在$T_A$和$T_B$的最大值和最小值之间变化。
+\begin{equation}
+T_{R}=\left\{\begin{array}{ll}{\max \left(T_{A}, T_{B}\right)} & {p \rightarrow+\infty} \\ 
+{\left(T_{A}+T_{B}\right) / 2} & {p=+1, \text { (算数平均数) }} \\ 
+{\sqrt{T_{A} T_{B}}} & {p\to0, \quad \text { (几何平均数) }} \\ 
+{2 T_{A} T_{B} /\left(T_{A}+T_{B}\right)} & {p=-1, \text { (调和平均数) }} \\ 
+{\min \left(T_{A}, T_{B}\right)} & {p \rightarrow-\infty}\end{array}\right.
+\end{equation}
+从物理意义上看，$p$的取值是不同的熵产生机制的反应。\par
+对于碰撞粒子厚度的计算可按照如下流程：\par
+考虑一对碰撞质子A、B，碰撞参数为b，碰撞参数处在x轴方向：
+\begin{equation}
+    \rho_{A,B}=\rho_{p}(x\pm b/2,y,z)
+\end{equation}
+如果假设密度在碰撞方向上的积分是收敛的或者至少可以计算，那么可以计算出碰撞的概率：
+\begin{equation}
+    P_{\mathrm{coll}}=1-\exp \left[-\sigma_{g g} \int d x d y \int d z \rho_{A} \int d z \rho_{B}\right]
+\end{equation}
+指数里的积分是重叠部分的积分，而$\sigma_{gg}$是有效核子碰撞界面，其取值应被选取为满足总碰撞截面$\sigma_{NN}$。
+\par
+碰撞概率会在决定两核子是否碰撞时使用。如果两质子碰撞了，我们可以得到厚度为：
+\begin{equation}
+    T_{A,B}(x,y)=\omega_{A,B}\int dz \rho_{A,B}(x,y,z)
+\end{equation}
+权重因子$\omega$来自于一个gamma分布：
+\begin{equation}
+    P_{k}(w)=\frac{k^{k}}{\Gamma(k)} w^{k-1} e^{-k w}
+\end{equation}
+通过gamma分布采样权重，可以重现实验上观测到的巨大涨落。而参数$k$则可以用来控制涨落的大小。\par
+对于含有许多核子的重核，可以通过引入Woods-Saxon势
 \section{研究课题}
 \subsection{利用机器学习鉴别流与非流}
 \subsubsection{输入数据以及数据预处理}
