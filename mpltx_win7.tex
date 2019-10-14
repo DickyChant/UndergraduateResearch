@@ -66,6 +66,10 @@
 \usepackage{amsmath,amsfonts,amssymb,amsthm,bm,upgreek}
 \usepackage{geometry}
 \usepackage[mathscr]{eucal}
+\usepackage{algorithm2e}
+\usepackage{bookmark}
+\usepackage{setspace}
+
 %\usepackage[style=alphabetic,maxnames=4,minnames=3,maxbibnames=99]{biblatex}
 %\usepackage{background} %Waterstamp package
 %\SetBgContents{...的实验报告} %Waterstamp to prevent copying
@@ -242,10 +246,27 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
 贝叶斯展开，是一种数据驱动的，利用贝叶斯公式对分布进行重建的无监督学习方法，在高能物理实验与核物理实验中有着广泛的应用。\par
 对于某一观测量的分布（或计数），我们都可以（事实上也不得不）利用离散的向量$\vec{d}$来进行刻画，其中，分量$d_i$表示了落入第$i$区间的概率（或计数）。
 类似的，联合分布概率（或计数）可以用矩阵$A$来刻画，分量$A_{ij}$表示落入区间$(i,j)$的概率（或分布）,通过对联合分布矩阵不同维度的归一化，还可以得到条件概率矩阵。\par
-因此，著名的贝叶斯公式
-$$p(a|b)=\frac{p(b|a)p(a)}{\int p(b|a)p(a)}$$
+因此，如果我们以$c$标注源（cause）分布，而用$e$标注响应（effect）分布，那么，著名的贝叶斯公式
+$$p(\tilde{c}_i|\tilde{e}_j)=\frac{p(\tilde{e}_j|\tilde{c}_i)p(\tilde{c}_i)}{\int p(\tilde{e}_j|\tilde{c})p(\tilde{c})d\tilde{c}}$$
 可以写成离散形式：
-$$A()$$
+$$M_{ji}=\frac{A_{ij}c_j}{\sum_{k}A_{ik}c_k}$$
+式中，$A_{ij}$与$M_{ji}$分别是两条件分布的离散形式，而$\vec{c},\vec{e}$则是连续分布$\tilde{c},\tilde{e}$的离散形式。\par
+在实验上，我们可以直接获得$\vec{e}$，同时根据不同的需求构造$A_{ij}$，例如，在高能实验领域中，可以利用GEANT对探测器进行模拟，进而获得
+基于模型的响应矩阵$A_{ij}$.
+获得了$A_{ij}$与$\vec{e}$后，可以构造如下的迭代流程：\par
+\begin{algorithm}
+    \SetAlgoLined
+    \KwData{$A_{ij},\vec{e}$}
+    \KwResult{$\hat{\vec{c}}$: $\vec{c}$的一个估计值}
+    为$\vec{c}$选取适合的先验分布$\vec{c}_0$并决定迭代次数$I$\;
+    \For{iter=1:I}{
+        $M^{iter}_{ji}=\frac{A_{ij}c^{iter-1}_j}{\sum_{k}A_{ik}c^{iter-1}_k}$\;
+        $c^{iter}_j=\sum_{k}M^{iter}_{jk}e_k$\;
+    }
+    $\hat{\vec{c}}$=$\vec{c}^{I}$\;
+    \caption{贝叶斯展开的迭代算法}
+\end{algorithm}
+这个迭代步骤最终将会收敛到贴近真实源分布附近，但一般来说，人们并不会令迭代次数过分大，以避免过多迭代带来的误差累积。
 \begin{figure}[t]
 \centering
 \includegraphics[width=140mm]{QGP}
@@ -508,9 +529,11 @@ Pythia&100\%&100\% &100\%\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
-
-
-
+\subsection{利用人工神经网络拟合相对论性重离子碰撞演化}
+\subsubsection{问题定义，数据处理及网络结构}
+利用TRENTO+VISHNU的联合模型，可以很好的描述相对论性重离子碰撞的演化过程。因而，一旦确定了TRENTO与VISHNU的参数，在多事件平均压制涨落的基础上，可以近似确定产生的末态粒子分布，既而确定末态粒子的观测量。
+因此，利用TRENTO+VISHNU模型，确定演化参数与末态观测量之间的关系，进而应用于真实的实验数据中，便可以获得对应于真实数据的演化参数。\par
+通过TRENTO的参数确定，我们或许可以选择最为接近实际的初态模型，而通过VISHNU参数的确定，我们可以直接确定QGP自身的宏观物理性质。
 
 
 
