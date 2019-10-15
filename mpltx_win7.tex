@@ -69,6 +69,7 @@
 \usepackage{algorithm2e}
 \usepackage{bookmark}
 \usepackage{setspace}
+\usepackage{subfig}
 
 %\usepackage[style=alphabetic,maxnames=4,minnames=3,maxbibnames=99]{biblatex}
 %\usepackage{background} %Waterstamp package
@@ -291,7 +292,7 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
 \section{相对论重离子碰撞简介}
 在相对论性重离子碰撞过程中，由于其生成的高密度环境，可能使得夸克和
 胶子接触禁闭，形成QGP，整个过程可由图~\ref{fig:QGP} 表示\cite{2013PhDT........31Q}。
-可以看出，在碰撞后的零点几飞米时间内（除以光速不再叙述），出现QGP，在
+可以看出，在碰撞后的零点几飞米时间内，出现QGP，在
 碰撞后的几飞米时间内，会重新生成新的粒子，最终，探测器可以探测到最后的
 粒子分布。为了研究QGP的性质，但受限于其存在时间极短，空间尺度极小等特点，
 需要通过最终的粒子分布来间接的推知QGP的性质。现在认为，QGP的性质与流体
@@ -594,13 +595,53 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
 \end{tabular}
 \end{ruledtabular}
 \end{table}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{bnn}
 \caption{贝叶斯神经网络结构图\label{fig:bnn}}%
 \end{figure}
 \subsubsection{结果与分析}
-   
+经过训练后，神经网络在测试集上的表现如图\ref{fig:bnnoutput}所示：\par
+\begin{figure}[htbp]
+\centering
+\subfloat[$\zeta/s_{norm}$]{\includegraphics[width = 0.2\textwidth]{fig_1.png}}
+\subfloat[$\eta/s_{slope}$]{\includegraphics[width = 0.2\textwidth]{fig_2.png}}
+\subfloat[$T_{switch}$]{\includegraphics[width = 0.2\textwidth]{fig_3.png}}
+\subfloat[$\eta/s_{min}$]{\includegraphics[width = 0.2\textwidth]{fig_4.png}}\\
+\subfloat[$\mathrm{N}$]{\includegraphics[width = 0.2\textwidth]{fig_5.png}}
+\subfloat[$p$]{\includegraphics[width = 0.2\textwidth]{fig_6.png}}
+\subfloat[$w$]{\includegraphics[width = 0.2\textwidth]{fig_7.png}}
+\subfloat[$k$]{\includegraphics[width = 0.2\textwidth]{fig_8.png}}\\
+\caption{贝叶斯神经网络在测试集上的表现\label{fig:bnnoutput}}
+\end{figure}
+继而，将其应用到ALICE的实验数据中，可以获得拟合参数如表\ref{tab:ALICEdata}：\par
+\begin{table}[htbp]
+\caption{贝叶斯神经网络在实验数据上的表现\label{tab:ALICEdata}}
+\begin{ruledtabular}
+\begin{tabular}{ccccccccc}
+参数&$\mathrm{N}$&$p$&$w$&$k$&$\eta/s_{slope}$&$\eta/s_{min}$&$\zeta/s_{norm}$&$T_{switch}$\\
+\colrule
+神经网络给出拟合&120。5&0&1.47&0.47&0.86&0.10&1.29&0.153\\
+最佳拟合&120&0&1.5&0.43&0.85&0.08&1.25&0.148
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+可以看出，神经网络在部分参数上可以给出较好的拟合精度，而在一些参数上预测效果则不够理想。当然，由于存在观测量对于参数敏感性的问题，我们还是应该计算观测量并与实验值对比，才能完成更好的判断。\par
+由于相对论性重离子碰撞的模拟需要大量的计算资源，我们只选取集体流系数进行计算，如图\ref{fig:alice}展示了集体流系数的计算结果。\par
+\begin{figure}[htbp]
+\centering
+\subfloat[针对ALICE实验结果拟合参数的相对误差]{\includegraphics[width=0.4\textwidth]{alice.png}}
+\subfloat[利用拟合参数计算的集体流（1200events），实线是网络预测结果，点是验证集中数据]{\includegraphics[width=0.4\textwidth]{alice_v2.png}}
+\caption{针对ALICE实验结果的集体流计算\label{fig:alice}}%
+\end{figure}
+此外，我们同时在验证集中随机选取了两组，同样计算了集体流系数，结果如图\ref{fig:valid}：\par
+\begin{figure}[htbp]
+    \centering
+    \subfloat[验证集数据一]{\includegraphics[width=0.4\textwidth]{v_1.png}}
+    \subfloat[验证集数据二]{\includegraphics[width=0.4\textwidth]{v_2.png}}
+    \caption{验证集数据的集体流计算（990events），实线是网络预测结果，点是验证集中数据\label{fig:valid}}%
+    \end{figure}
+从以上结果中可以看出，神经网络预测的参数，可以对集体流给出一个较好的拟合，由于算力的限制，我们模拟的碰撞事件数不够，这可能是拟合差距的主要来源。
 \subsection{利用贝叶斯展开研究集体流长程解关联现象}
 \subsubsection{问题定义，数据产生与处理}
 \begin{enumerate}
@@ -647,19 +688,94 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
         因此，一个合理的选择是展宽后的分布，因为根据展宽效应，其涵盖了可能的真实分布，并且，我们无法进行进一步的限制。
     \end{enumerate}
     \item 数据处理：
-    为了获得与实验上相吻合的数据，我们选取关联部分来自于均值为$0.08$，宽度
+    \begin{enumerate}
+        \item 为了获得与实验上相吻合的数据，我们选取关联部分来自于均值为$0.08$，宽度为$0.035/\sqrt{2}$的贝塞尔高斯分布。而对于反关联部分，我们采用均值为$0.02$，宽度为$0.01$的贝塞尔高斯分布，对于两部分间的夹角，在$(0,2\pi)$间均匀选取。最后，为前后向分别加上展宽效应：在两垂直方向上分别加入$\mu=0,\sigma=0.025$的高斯分布。
+        \item 为了减少计算量，一个有用的方式是进行不均匀区间划分，我们数据的划分如表\ref{tab:bu1}所示。
+    \end{enumerate}
+    \begin{table}[htbp]
+    \caption{\label{tab:bu1}}
+    \begin{ruledtabular}
+    \begin{tabular}{c|c|c}
+    维度&划分方式&区间数\\
+    \colrule
+    $(v_++v_-)/2$&0-0.02: 宽度0.01;
+    0.02-0.2: 宽度0.006;
+    0.2-0.3: 宽度0.01;
+    &42\\
+    $|v_+-v_-|/2$&0-0.03: 宽度0.005;
+    0.03-0.07: 宽度0.01;&10\\
+    $|\Delta\Psi|$&0-$3\pi/7$: 宽度$\pi/14$;
+    $3\pi/7$-$\pi$: 宽度$\pi/7$;&10    
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
 \end{enumerate}
-\subsubsection{具体实现、结果与分析}
-在我们的参数化模型中，
-
+\subsubsection{结果与分析}
+为了进行仔细的检验，我们选取了一维边缘分布，二维边缘分布，三维边缘分布分别进行贝叶斯展开。
+\begin{enumerate}
+    \item 一维边缘分布：\par
+    一维边缘分布的结果如图\ref{fig:bu1d}所示。\par
+    \begin{figure}[htbp]
+    \centering
+    \subfloat[$(v_++v_-)/2$]{\includegraphics[width=0.3\textwidth]{1d_vp.png}}
+    \subfloat[$|v_+-v_-|/2$]{\includegraphics[width=0.3\textwidth]{1d_vm.png}}
+    \subfloat[$|\Delta\Psi|$]{\includegraphics[width=0.3\textwidth]{1d_the.png}}
+    \caption{不同的边缘分布在一维的贝叶斯展开结果\label{fig:bu1d}}%
+    \end{figure}
+    可以看出，在一维上，随着迭代的进行，各边缘分布都呈现了收敛趋势。但是，仅仅$16$次迭代还不足以让迭代结果收敛至真实分布概率较低区域。
+    \item 二维边缘分布：\par
+    我们选取平均模长和夹角大小的联合分布进行研究，该二维联合分布的边缘分布收敛情况如\ref{fig:bu2d}所示。\par
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=140mm]{2d_vp_the.png}
+    \caption{平均模长和夹角大小的联合分布的贝叶斯展开结果\label{fig:bu2d}}%
+    \end{figure}
+    边缘分步与一维情形类似，而对于联合分布，二维热图更能反应出分布的性质，如图\ref{fig:bu2dc}将迭代结果，真实分布与观测分布进行了对比。可以看出，16次迭代后，联合分布已经可以收敛到与真实分布接近的水平。\par
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=140mm]{2d_vp_the_compare.png}
+        \caption{平均模长和夹角大小的联合分布的贝叶斯展开结果\label{fig:bu2dc}}%
+        \end{figure}
+    热图的缺陷是难以给人以直观的定量感受，因而我们绘制了绝对残差和相对残差的热力图。\ref{fig:res2d}\par
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=140mm]{res.png}
+        \caption{平均模长和夹角大小的联合分布的贝叶斯展开残差结果\label{fig:res2d}}%
+        \end{figure}
+        从残差的分布来看，随着模长均值的减小，夹角维度分布的弥散收敛逐渐困难，为了观察细节，我们将条件分布矩阵一并画出，如图\ref{fig:resmat}。
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=140mm]{resmat.png}
+            \caption{夹角大小维度的迁移矩阵\label{fig:resmat}}%
+            \end{figure}
+        从条件分布矩阵中可以看出，在平均模长较小的区间内，夹角的响应是更宽的（如图\ref{fig:argue}），因而将其还原的操作也势必非常困难。
+        \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=140mm]{argue}
+        \caption{不同平均模长下展宽行为\label{fig:argue}}%
+        \end{figure}
+        \item 三维分布：\par
+        将三维分布的结果投影到三个维度，获得边缘分布如图\ref{fig:bu3d}。\par
+        \begin{figure}[htbp]
+            \centering
+            \subfloat[$(v_++v_-)/2$]{\includegraphics[width=0.3\textwidth]{3d_vp.png}}
+            \subfloat[$|v_+-v_-|/2$]{\includegraphics[width=0.3\textwidth]{3d_vm.png}}
+            \subfloat[$|\Delta\Psi|$]{\includegraphics[width=0.3\textwidth]{3d_the.png}}
+            \caption{三维的贝叶斯展开结果\label{fig:bu3d}}%
+            \end{figure}
+        从边缘的分布的收敛行为来看，三维也取得了较好的效果。\par
+\end{enumerate}
+综上，利用贝叶斯展开，可以对接近真实情形的解关联模型数据进行较好的处理，具有运用到实验数据上的价值。但是，应用到实验数据上时，对于条件分布矩阵的产生，需要
+综合理论模型进行更好的设计。
 
 \section{结论}
 在流与非流事件的分类课题中，我们采用了主成分分析和神经网络两种方法进行了尝试。其中主成分分析方法
 可以在定性上给出流与非流事件的区别，并且能够直观的显示出流与非流事件区别的形式；而神经网络方法在训练集足够充分的情况下，能够很好的区分流与非流事件，并且只要
 事件平均数达到一定数据，均可以得到很高的准确度。但是，要验证我们所用的机器学习的方法是否
-真正合理，接下来势必要用真实的实验数据进行测试。
-在利用神经网络拟合相对论性重离子碰撞的课题中，我们
-
+真正合理，接下来势必要用真实的实验数据进行测试。\par
+在利用神经网络拟合相对论性重离子碰撞的课题中，我们所采用的贝叶斯神经网络，通过末态粒子观测量，可以对相对论性重离子碰撞过程的演化参数给出较好的拟合。在一步的研究过程中，一方面可以利用贝叶斯神经网络的特性
+给出置信区间，另一方面还需要进行更多的计算进行验证。\par
+在利用贝叶斯展开研究集体流长程解关联效应的课题中，通过简化模型，我们验证了贝叶斯展开在这一问题中的有效性与实用价值。在进一步的研究中，我们将结合理论模型，将贝叶斯展开这一工具应用于实验数据中，对实际的解关联现象进行研究。
 \section{致谢}
 非常感谢宋慧超老师选择的富有创新性和挑战性的课题，并且在本研期间给予我们的诸多帮助和谆谆教诲。同时也要感谢组内的各位成员，
 尤其是赵文斌、黄恒丰以及刘楚源，在本研期间帮助我们产生了所需要的数据以及指导我们如何使用这些数据，
