@@ -1,0 +1,76 @@
+\begin{thebibliography}{10}
+
+\bibitem{PhysRevC.96.024908}
+M.~Aaboud, G.~Aad, B.~Abbott, and et~al.
+\newblock Measurements of long-range azimuthal anisotropies and associated
+  fourier coefficients for $pp$ collisions at $\sqrt{s}=5.02$ and 13 tev and
+  $p+\text{Pb}$ collisions at $\sqrt{{s}_{\mathrm{NN}}}=5.02$ tev with the
+  atlas detector.
+\newblock {\em Phys. Rev. C}, 96:024908, Aug 2017.
+
+\bibitem{PhysRevD.94.112002}
+Daniel Guest, Julian Collado, Pierre Baldi, Shih-Chieh Hsu, Gregor Urban, and
+  Daniel Whiteson.
+\newblock Jet flavor classification in high-energy physics with deep neural
+  networks.
+\newblock {\em Phys. Rev. D}, 94:112002, Dec 2016.
+
+\bibitem{2010LanB...23..240H}
+Ulrich {Heinz}.
+\newblock {Early Collective Expansion: Relativistic Hydrodynamics and the
+  Transport Properties of QCD Matter}.
+\newblock {\em Landolt B\&ouml;rnstein}, 23:240, Jan 2010.
+
+\bibitem{PhysRevLett.116.172302}
+V.~Khachatryan, A.~M. Sirunyan, A.~Tumasyan, W.~Adam, and et~al.
+\newblock Measurement of long-range near-side two-particle angular correlations
+  in $pp$ collisions at $\sqrt{s}=13\text{ }\text{ }\mathrm{TeV}$.
+\newblock {\em Phys. Rev. Lett.}, 116:172302, Apr 2016.
+
+\bibitem{PhysRevC.72.064901}
+Zi-Wei Lin, Che~Ming Ko, Bao-An Li, Bin Zhang, and Subrata Pal.
+\newblock Multiphase transport model for relativistic heavy ion collisions.
+\newblock {\em Phys. Rev. C}, 72:064901, Dec 2005.
+
+\bibitem{PhysRevA.96.042113}
+Kyle Mills, Michael Spanner, and Isaac Tamblyn.
+\newblock Deep learning and the schr\"odinger equation.
+\newblock {\em Phys. Rev. A}, 96:042113, Oct 2017.
+
+\bibitem{PhysRevC.89.064910}
+Longgang Pang, Qun Wang, and Xin-Nian Wang.
+\newblock Relics of minijets amid anisotropic flows in high-energy heavy-ion
+  collisions.
+\newblock {\em Phys. Rev. C}, 89:064910, Jun 2014.
+
+\bibitem{PhysRevC.58.1671}
+A.~M. Poskanzer and S.~A. Voloshin.
+\newblock Methods for analyzing anisotropic flow in relativistic nuclear
+  collisions.
+\newblock {\em Phys. Rev. C}, 58:1671--1678, Sep 1998.
+
+\bibitem{2013PhDT........31Q}
+Zhi {Qiu}.
+\newblock {\em {Event-by-event Hydrodynamic Simulations for Relativistic
+  Heavy-ion Collisions}}.
+\newblock PhD thesis, The Ohio State University, Jan 2013.
+
+\bibitem{2017arXiv170300670S}
+Huichao {Song}, You {Zhou}, and Katarina {Gajdosova}.
+\newblock {Collective flow and hydrodynamics in large and small systems at the
+  LHC}.
+\newblock {\em arXiv e-prints}, page arXiv:1703.00670, Mar 2017.
+
+\bibitem{PhysRevB.96.144432}
+Ce~Wang and Hui Zhai.
+\newblock Machine learning of frustrated classical spin models. i. principal
+  component analysis.
+\newblock {\em Phys. Rev. B}, 96:144432, Oct 2017.
+
+\bibitem{PhysRevD.44.3501}
+Xin-Nian Wang and Miklos Gyulassy.
+\newblock hijing: A monte carlo model for multiple jet production in
+  $\mathrm{pp}$, $\mathrm{pA}$, and $\mathrm{AA}$ collisions.
+\newblock {\em Phys. Rev. D}, 44:3501--3516, Dec 1991.
+
+\end{thebibliography}

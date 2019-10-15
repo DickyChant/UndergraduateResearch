@@ -153,6 +153,7 @@
 \section{机器学习方法} 
 前面简要介绍了一下本文所用的研究方法，神经网络方法以及主成分分析方法。下面将简要介绍一下其中的细节。
 \subsection{神经网络}
+\subsubsection{总述}
 神经网络来源于仿生学，是模仿生物神经网络而创建的新的方法。
 实现其功能的基本单元为：神经元及神经元间的连接，激活函数，损失函数。
 而一般的前馈神经网络的结构如图~\ref{fig:cnn} 所示。整个网络由许多包含很多
@@ -179,39 +180,40 @@ Loss(y^{p},y^{r})&=\|y^{p}-y^{r}\|^{2} \label{eq:2} \\
 Loss(y^{p},y^{r})&=-\sum_{i}y_{i}^{r}lny_{i}^{p} \label{eq:3}
 \end{align}
 \par
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{CNN}
 \caption{\label{fig:cnn}%
 此图表示了前馈神经网络的一般结构，数据从输出层输入，被传递
 入隐藏层，最终通过输出层输出}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{cjlj}
 \caption{\label{fig:cjlj}%
 此图表示了前馈神经网络层与层之间的联系}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{cnnn}
 \caption{\label{fig:cnnn}%
 此图表示了卷积神经网络的一般结构，其中较为特别的是卷积层与池化层}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{cnv}
 \caption{\label{fig:cnv}%
 此图表示了卷积层的工作模式}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{pool}
 \caption{\label{fig:pool}%
 此图表示了池化层的工作模式}
 \end{figure}
-本文所用到神经网络为传统的卷积神经网络(Convolutional Neural 
-Network, CNN)。其基本结构如图~\ref{fig:cnnn} 所示。可以看到，与之前展示的前馈神经网络相比，二者基本一致，
+\subsubsection{卷积神经网络}
+传统的卷积神经网络(Convolutional Neural 
+Network, CNN)是本文中将要涉及的一类神经网络，其基本结构如图~\ref{fig:cnnn} 所示。可以看到，与之前展示的前馈神经网络相比，二者基本一致，
 只是对于卷积神经网络有两类特殊的层，即卷积层与池化层，下面将简要解释下。对于卷积层，如图~\ref{cnv} ，一个重要的思想就是共享参数。
 前一层为爱因斯坦图像，后一层为四种颜色点所示的一层，这四个点
 与前一层部分点相连，更合理的想法为有一个滤波器存储相关参数，其扫过前一层，按照类似前面所述的层与层间的
@@ -221,7 +223,42 @@ Network, CNN)。其基本结构如图~\ref{fig:cnnn} 所示。可以看到，与
 图中两层直接相连，前一层的红色区域与池化层的蓝色区域相对应，其余部分各自对应，然后对应的区域按一定的规则，例如：
 仅取最大值或取平均值规则来得到下一层，得到的新层即为池化层，按所用规则对应为最大池或平均池。这两种层的优点在于，
 卷积层能够提取出图像中的局部信息，池化层能够压缩数据，防止过拟合等等。
-\begin{figure}[t]
+\subsubsection{贝叶斯神经网络}
+贝叶斯神经网络是基于贝叶斯理论的人工神经网络结构，在面对小样本学习时有独特的优势。\par
+贝叶斯公式有着如下表述：
+\begin{equation}
+    p(W | X, Y)=\frac{p(W) p(Y | X, W)}{p(Y | X)}
+\end{equation}
+式中，$W$代表网络中的参数，$(X,Y)$则是数据集数据，$X$代表输入，而$Y$代表输出。\par
+因此$p(Y|X)$是给定的，而剩下的各项，$p(W)$是参数的先验分布，而$p(Y|X,W)$则代表了网络在给定参数$W$和输入$X$时获得的输出概率。\par
+神经网络的一大应用场景是拟合复杂的映射，$p(W|X,Y)$的真实形式往往十分复杂。因此，在贝叶斯神经网络中，我们并不直接求解，而是通过一个参数化的分布
+$q(W)$来逼近$p(W)$。\par
+在信息论中，人们往往会采用KL散度（又称为相对熵）来描述两个分布的接近程度，对于我们的问题，有：
+\begin{equation}
+    \begin{aligned}
+    KL(q||p)&=\int q(W)\log{\frac{q(W)}{p(W|X,Y)}}\\
+    &=E_q[\log{\frac{q(W)}{p(W|X,Y)}}]
+    \end{aligned}
+\end{equation}
+注意到KL散度并不是对称的，在我们的问题中，由于$p(W|X,Y)$的计算实际上还需要利用$q(W)$，因此采用如式的前向KL散度更符合信息论意义。同时，以$p(W|X,Y)$求期望操作也难以实现。\par
+因此问题变为：
+\begin{equation}
+    \begin{aligned}
+        \min_{q(W)}KL(q||p)&=\min_{q(W)}E_q[\log{\frac{q(W)}{p(W|X,Y)}}]\\
+        &=\min_{q(W)}E_{q}[\log q(W)-\log p(W)-\log p(Y | X, W)+\log p(Y | X)]
+        \end{aligned}
+\end{equation}
+下面讨论每一项的求解：
+\begin{enumerate}
+    \item $E_q[\cdot]$\par 根据$q(W)$求期望这一操作的实现可以通过根据$q(W)$进行大量采样求平均完成；
+    \item $\log q(W)$\par 这一项可以根据$q(W)$的形式直接获得，一般来说，人们会选择W中各分量各自符合一个高斯分布；
+    \item $\log p(W)$\par 这一项可以通过适当选取先验获得，一个通常的选择是高斯分布；
+    \item $\log p(Y|X)$\par 对于特定的问题来说，这一项是常数，优化问题中可以不加考虑；
+    \item $\log p(Y | X, W)$\par 这一项的意义是给定参数$W$与输入$X$下，输出的分布，由于我们取$W$各分量均为高斯分布并认为可以足够接近真实分布，因此
+    可以认为，网络输出也应该是一个高斯分布，其期望值正是$X$对应的$Y_{pred}$，所以$p(Y | X, W)=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(\left(Y-Y_{p r e d}\right)^{T} \sigma_{-1}\left(Y-Y_{p r e d}\right)\right)$，
+    式中$\sigma_{-1}$是可调参数，代表了高斯分布的标准差，通常的选择是与$p(W)$的先验保持一致。
+\end{enumerate}
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{pca}
 \caption{\label{fig:pca}%
@@ -247,9 +284,9 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
 对于某一观测量的分布（或计数），我们都可以（事实上也不得不）利用离散的向量$\vec{d}$来进行刻画，其中，分量$d_i$表示了落入第$i$区间的概率（或计数）。
 类似的，联合分布概率（或计数）可以用矩阵$A$来刻画，分量$A_{ij}$表示落入区间$(i,j)$的概率（或分布）,通过对联合分布矩阵不同维度的归一化，还可以得到条件概率矩阵。\par
 因此，如果我们以$c$标注源（cause）分布，而用$e$标注响应（effect）分布，那么，著名的贝叶斯公式
-$$p(\tilde{c}_i|\tilde{e}_j)=\frac{p(\tilde{e}_j|\tilde{c}_i)p(\tilde{c}_i)}{\int p(\tilde{e}_j|\tilde{c})p(\tilde{c})d\tilde{c}}$$
+\begin{equation}p(\tilde{c}_i|\tilde{e}_j)=\frac{p(\tilde{e}_j|\tilde{c}_i)p(\tilde{c}_i)}{\int p(\tilde{e}_j|\tilde{c})p(\tilde{c})d\tilde{c}}\end{equation}
 可以写成离散形式：
-$$M_{ji}=\frac{A_{ij}c_j}{\sum_{k}A_{ik}c_k}$$
+\begin{equation}M_{ji}=\frac{A_{ij}c_j}{\sum_{k}A_{ik}c_k}\end{equation}
 式中，$A_{ij}$与$M_{ji}$分别是两条件分布的离散形式，而$\vec{c},\vec{e}$则是连续分布$\tilde{c},\tilde{e}$的离散形式。\par
 在实验上，我们可以直接获得$\vec{e}$，同时根据不同的需求构造$A_{ij}$，例如，在高能实验领域中，可以利用GEANT对探测器进行模拟，进而获得
 基于模型的响应矩阵$A_{ij}$.
@@ -267,13 +304,13 @@ $$M_{ji}=\frac{A_{ij}c_j}{\sum_{k}A_{ik}c_k}$$
     \caption{贝叶斯展开的迭代算法}
 \end{algorithm}
 这个迭代步骤最终将会收敛到贴近真实源分布附近，但一般来说，人们并不会令迭代次数过分大，以避免过多迭代带来的误差累积。
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{QGP}
 \caption{\label{fig:QGP}%
 此图表示了相对论性重离子碰撞产生QGP的过程}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=80mm]{hz}
 \caption{\label{fig:hz}%
@@ -292,7 +329,7 @@ $$M_{ji}=\frac{A_{ij}c_j}{\sum_{k}A_{ik}c_k}$$
 如图~\ref{fig:hz} 所示，表示的式在垂直粒子数方向上两核子相碰的相关物理量，
 $x-y-z$为实验室坐标系，$x^{'}-y^{'}$为两核子中心连线方向坐标系，其中$x^{'}$与$x$之间
 的夹角为$\psi_{R}$，被称为反应平面角（event plane angle）。$p_{t}$表示最终形成的粒子
-的动量在$x-y$平面上的分量，$\phi$为$p_{t}$在$x-y$平面内的方位角，赝快度$\eta=arctanh(\frac{p_{z}}{|p|})$
+的动量在$x-y$平面上的分量，$\phi$为$p_{t}$在$x-y$平面内的方位角，赝快度$\eta=\operatorname¡{arctanh}(\frac{p_{z}}{|p|})$
 用于表示粒子在$z$方向上分布性质。因此，粒子的产额可用式~\ref{eq:4} 表示\cite{PhysRevC.58.1671}。
 \begin{equation}
 E\frac{d^{3}N}{dp^{3}}=\frac{1}{2\pi}\frac{d^{2}N}{p_{t}dp_{t}d\eta}(1+\sum_{i=1}^{\infty}2v_{n}cos(n(\phi-\psi_{R}))) \label{eq:4}
@@ -314,7 +351,7 @@ C(\Delta\phi,\Delta\eta)=\frac{\sum_{events}S(\Delta\phi,\Delta\eta)}{\sum_{even
 如图~\ref{fig:fnf} 所示\citet{PhysRevC.96.024908}，左图表示的是非流事件的示意图，右图表示的是流事件的示意图。可以看到非流时间仅有在$\Delta\phi=0,\Delta\eta=0$
 处的尖峰结构以及在$\Delta\phi=\pi$处的脊结构，而对于流事件，还存在$\Delta\phi=0$处的脊结构，这被称为流事件中的双脊结构，
 而这也是区分流与非流事件的一个很重要的特征。
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{fnf}
 \caption{\label{fig:fnf}%
@@ -333,7 +370,7 @@ C(\Delta\phi,\Delta\eta)=\frac{\sum_{events}S(\Delta\phi,\Delta\eta)}{\sum_{even
 厚度函数的选取会在之后简述。\par
 一旦拥有了厚度函数，依照如下的原则，我们就可以构造熵作为初态。
 \begin{enumerate}
-    \item 程函近似有效：熵的产生来自于A和B的程函重合；
+    \item 熵的产生来自于A和B的密度重合；
     \item 存在一个标量场$f(T_A,T_B)$，将厚度转化成熵。
 \end{enumerate}
 具体来说，首先，标量场$f$应当正比于在中快度区间内流体热力学演化时刻产生的熵。
@@ -374,11 +411,16 @@ T_{R}=\left\{\begin{array}{ll}{\max \left(T_{A}, T_{B}\right)} & {p \rightarrow+
 \par
 碰撞概率会在决定两核子是否碰撞时使用。如果两质子碰撞了，我们可以得到厚度为：
 \begin{equation}
-    T_{A,B}(x,y)=\omega_{A,B}\int dz \rho_{A,B}(x,y,z)
+    T_{A,B}(x,y)=\gamma_{A,B}\int dz \rho_{A,B}(x,y,z)
 \end{equation}
-权重因子$\omega$来自于一个gamma分布：
+而在计算中，一般选取：
 \begin{equation}
-    P_{k}(w)=\frac{k^{k}}{\Gamma(k)} w^{k-1} e^{-k w}
+    T(x, y)=\frac{\gamma}{2 \pi w^{2}} \exp \left(-\frac{x^{2}+y^{2}}{2 w^{2}}\right)
+\end{equation}
+其中$\omega$是可调参数，反映了核子的有效宽度。\par
+权重因子$\gamma$来自于一个gamma分布：
+\begin{equation}
+    P_{k}(\gamma)=\frac{k^{k}}{\Gamma(k)} w^{k-1} e^{-k w}
 \end{equation}
 通过gamma分布采样权重，可以重现实验上观测到的巨大涨落。而参数$k$则可以用来控制涨落的大小。\par
 对于含有许多核子的重核，可以通过引入Woods-Saxon势的限制等，配置核子位置，再将单核子的约化厚度混合。
@@ -397,7 +439,8 @@ VISHNU在不同的阶段调用的模型分别是VISH2+1,iSS,UrQMD.
 \subsection{相对论性重离子碰撞中的长程解关联行为}
 近年来，相对论性重离子碰撞领域中的一大研究热点，是长程关联中的解关联行为。\par
 在重离子碰撞中，长程这一称谓指的是快度方向的行为，如前所述，实验数据显示快度方向有着很好的平移对称不变性，换而言之，不同快度区间内的粒子分布有着很强的关联性。\par
-但是随着实验数据的积累，在涨落幅度被压低后，人们意识到在快度方向也存在着解关联行为，并且不全是因为涨落导致。因此，对于这一解关联现象的研究逐渐成为热点。
+但是随着实验数据的积累，在涨落幅度被压低后，人们意识到在快度方向也存在着解关联行为，并且不全是因为涨落导致。因此，对于这一解关联现象的研究逐渐成为热点。\par
+由于解关联行为强度不高，因而实验上一般采用如下的近似：
 \section{研究课题}
 \subsection{利用机器学习鉴别流与非流}
 \subsubsection{输入数据以及数据预处理}
@@ -415,7 +458,7 @@ VISHNU在不同的阶段调用的模型分别是VISH2+1,iSS,UrQMD.
 的金金碰撞；Pythia模型模拟的是全中心度、碰撞能量为13Tev的质子质子碰撞。如图~\ref{fig:sample} 表示的为在大量事件
 平均下各个模型的二粒子关联函数示意图。可以看到，用于生成流事件的Ampt与Trento模型，呈现出了明显的双峰结构，而
 用于生成非流事件的Hijing和Pythia模型则没有出现双峰结构。
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{sample}
 \caption{\label{fig:sample}%
@@ -432,20 +475,20 @@ Trento2030、Hijing三个模型进行主成分分析，得到的结果如图~\re
 在此分界线下，用Ampt(200Gev)的数据进行测试，结果如图~\ref{fig:cs} 所示，可以看出，测试结果符合我们的预期。但是必须指出的是，此黑线的划定有很大的自由度，因此很难精确
 的区分流与非流的混合事件。同时，从数据的分布可以看出，此结果具有很强的模型依赖性，而这对我们寻找流和非流的本质区别是有害的，因此我们需要其他的方法来精确的确定流与非流的本质区别，下面
 我们将用神经网络进行尝试。
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{pcasample}
 \caption{\label{fig:pcasample}%
 Hijing，Trento2030\footnote{图中表示为Karpenko}，Ampt(39Gev)，Ampt(200Gev)在大量事件平均下$S(\Delta\phi,\Delta\eta)$的示例图}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{pcaresults}
 \caption{\label{fig:pcaresults}%
 对Hijing，Trento2030\footnote{图中表示为Karpenko}，Ampt(39Gev)进行主成分分析得到的结果图，左图是各个特征向量对应的特征值大小，右图为输入数据在第一个和第二个
 特征向量组成的平面上的分布}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{tzxl}
 \caption{\label{fig:tzxl}%
@@ -453,13 +496,13 @@ Hijing，Trento2030\footnote{图中表示为Karpenko}，Ampt(39Gev)，Ampt(200Ge
 第一第二个特征向量，左边为第一个，右边为第二个，横坐标为$\Delta\eta$,0-32表示的是$\Delta\eta\in(-5,5)$
 ，纵坐标为$\Delta\phi$,0-32表示的是$\Delta\phi\in[-0.5\pi,1.5\pi)$}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{qb}
 \caption{\label{fig:qb}%
 假定的流与非流事件的分界线，即图中黑线所示}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{cs}
 \caption{\label{fig:cs}%
@@ -480,7 +523,7 @@ Hijing，Trento2030\footnote{图中表示为Karpenko}，Ampt(39Gev)，Ampt(200Ge
 同时我们研究了在不同事件平均下网络的表现结果，即对涨落压制在程度强弱下，网络的表现结果，可以看出，在1000、100、50个事件平均下，网络的表现都十分
 良好，这表明，涨落在对于网络的分辨本领影响并不是十分巨大，只要在一定的事件数平均下，对涨落造成了一定程度上的抑制，网络
 就可以得到一个比较好的表现结果。
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{sjwl}
 \caption{\label{fig:sjwl}%
@@ -531,12 +574,51 @@ Pythia&100\%&100\% &100\%\\
 \end{table}
 \subsection{利用人工神经网络拟合相对论性重离子碰撞演化}
 \subsubsection{问题定义，数据处理及网络结构}
-利用TRENTO+VISHNU的联合模型，可以很好的描述相对论性重离子碰撞的演化过程。因而，一旦确定了TRENTO与VISHNU的参数，在多事件平均压制涨落的基础上，可以近似确定产生的末态粒子分布，既而确定末态粒子的观测量。
+\begin{enumerate}
+    \item 问题提出与定义：\par
+    利用TRENTO+VISHNU的联合模型，可以很好的描述相对论性重离子碰撞的演化过程。因而，一旦确定了TRENTO与VISHNU的参数，在多事件平均压制涨落的基础上，可以近似确定产生的末态粒子分布，既而确定末态粒子的观测量。\par
 因此，利用TRENTO+VISHNU模型，确定演化参数与末态观测量之间的关系，进而应用于真实的实验数据中，便可以获得对应于真实数据的演化参数。\par
-通过TRENTO的参数确定，我们或许可以选择最为接近实际的初态模型，而通过VISHNU参数的确定，我们可以直接确定QGP自身的宏观物理性质。
-
-
-
+通过不同的参数选择，TRENTO可以给出近似各种模型的初态分布，通过TRENTO参数的确定，我们或许可以选择最为接近实际的初态模型；而通过VISHNU参数的确定，我们可以直接确定QGP自身的宏观物理性质。\par
+    \item 数据选择及处理：\par
+    数据的选取分为两个方面，一方面是模型参数，另一方面是观测量：
+    \begin{enumerate}
+        \item 对于初态模型，我们将TRENTO所用到的所有参数都作为输入，包括有总规模因子$\mathrm{N}$、约化密度参数$p$、权重因子抽样符合的gamma分布参数$k$以及粒子分布与能量密度转换参数$\omega$；
+        \item 对于流体演化混合模型，我们所需要的参数有：流体的粘滞系数，分别为剪切粘滞系数$\eta/s$，体粘滞系数$\zeta/s$，以及转变温度$T_{switch}$。在演化过程中，粘滞系数事实上是温度的函数，在我们使用的模型中，
+        认为在转变温度之上，强子气体的$\eta/s$是一个常数，而且是对于各种参数条件取值都相等，因此我们无法拟合；而在转变温度之下，QGP的$\eta/s$随着温度的上升呈线性变化，可以用最小值和斜率来描述；同时，对于$\zeta/s$，
+        模型将通过调制整体归一化系数完成控制。
+        \item 对于末态粒子观测量，在相对论性重离子碰撞中，粒子的产量$dN/d\eta$以及集体流系数$v_n$，是描述碰撞事件末态的重要指标，因此我们选择使用这些观测量来进行系数的拟合，同时，将所选择的观测量按照中心度进行离散化。
+    \end{enumerate}
+    综上，数据的选取如表所示。
+    \item 神经网络结构的选取：\par
+    由于相对论性重离子碰撞的模拟十分消耗计算资源，而为了压低涨落，所需要的模拟事件数目更多，因此，只拥有250组数据供训练，50+1组数据供测试。所以，在本课题中采用贝叶斯神经网络进行拟合，网络的结构如图。    
+\end{enumerate}
+\subsubsection{结果与分析}
+对于
+\subsection{利用贝叶斯展开研究集体流长程解关联现象}
+\subsubsection{问题定义，数据处理及网络结构}
+\begin{enumerate}
+    \item 问题提出与定义：\par
+    在相对论性重离子碰撞领域的实验数据处理中，一个重要的问题是如何减少探测器的影响。探测器不仅仅会带来效率上的损失，有时往往还伴随着随机噪声，使本来狭窄的信号分布展宽。而在对集体流效应的研究中，压低非流信号的影响也十分重要。
+    \par
+    处理积分流时（在$\eta$方向进行积分，而前向后向的分布应当是完全相关的）贝叶斯展开在处理低维数据中有着很好的表现，可以同时完成上述功能。\par
+    但是，如果要利用贝叶斯展开研究集体流长程解关联行为，问题就会变得非常复杂。
+    \begin{enumerate}
+        \item 集体流的解关联行为不仅表现在集体流矢量的幅度上，也表现在集体流矢量的形状和相位上。因此，若要描述整个体系，需要一个高维的相空间。而高维的相空间所消耗的计算资源将十分巨大，行为也会更加混乱。
+        \item 事实上，解关联这一行为的强度并不高，因此在整个相空间中，解关联行为是非常局域化的。局域化带来了一些便利，例如可以减少相空间内区域的个数；但是，局域化的分布意味着在相空间中存在着概率较小点，对于这些点的处理，迭代次数过多会带来巨大涨落，迭代次数较少收敛效果可能较差。
+    \end{enumerate}
+    因此，在应用到实验数据之前，需要仔细地检验贝叶斯展开这一工具的效果，并通过检验效果考虑是否应用于实验数据。
+    \item 数据选择及处理：\par
+    我们采取一个简单的解关联模型来完成这一检验。\par
+    \begin{enumerate}
+        \item 虽然，不同$\eta$区间内，集体流矢量需要相角和幅度共同描述。但是，首先我们关心的是两者的关联程度，因此只有相对相位有意义，相空间可被减少为3维；其次，解关联行为的强度不高，两者的幅度应该较为接近，因此可以采用幅度的算术平均值
+        和幅度差来衡量，可以减少相空间内一个维度的总大小；最后，不妨仅取相对相位与幅度差的绝对值，可以将相空间的体积再次缩减，减少消耗的计算资源。
+        \item 我们采取如下的解关联模型实现：\par
+        实验上对于解关联的测定，常常是通过前向后向$\eta$绝对值相同区间来实现。
+    \end{enumerate}
+        
+\end{enumerate}
+\subsubsection{结果与分析}
+对于
 
 
 \section{结论}
@@ -572,8 +654,8 @@ Pythia&100\%&100\% &100\%\\
 
 
 \section{\heiti\zihao{-4}作者简介}
-方永康，男，1998年11月出生于安徽省长丰县，2016年从安徽省合肥一六八中学考入北京大学物理学院。
-
+方永康，男，1998年11月出生于安徽省长丰县，2016年从安徽省合肥一六八中学考入北京大学物理学院。\par
+钱思天，男，1998年4月出生于安徽省合肥市，2016年从安徽省合肥一六八中学考入北京大学物理学院。
 \section{\heiti\zihao{-4}感悟与寄语}
 通过本研的经历，初步体验到了研究工作者的经历。在研究过程中总是有苦有乐的，有趣的是可以接触到
 之前从未接触到的问题，并且可以尝试用不同的方法进行研究，同时可以和其他人进行交流，共同探讨同一个问题，
