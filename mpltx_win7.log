@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.9.5)  15 OCT 2019 18:30
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.9.5)  15 OCT 2019 18:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1680,11 +1680,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 589--589
  []
 
 
-Overfull \hbox (27.6656pt too wide) in alignment at lines 576--591
+Underfull \hbox (badness 10000) in paragraph at lines 589--589
+\TU/lmr/m/n/12 0−5,5−10,10−20,\TU/FandolSong-Regular(0)/m/n/12 … …|
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 590--590
+\TU/lmr/m/n/12 0−5,5−10,10−20,\TU/FandolSong-Regular(0)/m/n/12 … …|
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 591--591
+\TU/lmr/m/n/12 0−5,5−10,10−20,\TU/FandolSong-Regular(0)/m/n/12 … …|
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 592--592
+\TU/lmr/m/n/12 0−5,5−10,10−20,\TU/FandolSong-Regular(0)/m/n/12 … …|
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 593--593
+\TU/lmr/m/n/12 0−5,5−10,10−20,\TU/FandolSong-Regular(0)/m/n/12 … …|
+ []
+
+
+Overfull \hbox (27.6656pt too wide) in alignment at lines 576--594
  [] [] [] [] 
  []
 
-[20] [21] [22] [23] (./mpltx_win7.bbl)
+File: bnn.pdf Graphic file (type pdf)
+<use bnn.pdf>
+[20] [21] [22] [23] (./mpltx_win7.bbl [24])
 *************************************************
 * fontspec warning: "script-not-exist"
 * 
@@ -1706,46 +1733,46 @@ Overfull \hbox (27.6656pt too wide) in alignment at lines 576--591
 .................................................
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\heiti' on input line 681.
+(hyperref)                removing `\heiti' on input line 689.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 681.
-
-[24]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\heiti' on input line 684.
+(hyperref)                removing `\zihao' on input line 689.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 684.
+(hyperref)                removing `\heiti' on input line 692.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\heiti' on input line 691.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\zihao' on input line 691.
+(hyperref)                removing `\zihao' on input line 692.
 
 [25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 696.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\heiti' on input line 699.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\zihao' on input line 699.
+
+[26]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 704.
  (./mpltx_win7.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 696.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 696.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 704.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 704.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 27737 strings out of 492970
- 545828 string characters out of 6133939
- 658173 words of memory out of 5000000
- 31401 multiletter control sequences out of 15000+600000
+ 27763 strings out of 492970
+ 547311 string characters out of 6133939
+ 658241 words of memory out of 5000000
+ 31426 multiletter control sequences out of 15000+600000
  548183 words of font info for 124 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  53i,16n,85p,10483b,610s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on mpltx_win7.pdf (25 pages).
+Output written on mpltx_win7.pdf (26 pages).
