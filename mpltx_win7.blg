@@ -4,44 +4,44 @@ The top-level auxiliary file: mpltx_win7.aux
 The style file: plain.bst
 Database file #1: mpltx_win7Notes.bib
 Database file #2: yinyong2.bib
-You've used 12 entries,
+You've used 11 entries,
             2118 wiz_defined-function locations,
-            590 strings with 6484 characters,
-and the built_in function-call counts, 4370 in all, are:
-= -- 431
-> -- 219
-< -- 1
-+ -- 86
-- -- 74
-* -- 328
-:= -- 734
-add.period$ -- 36
-call.type$ -- 12
-change.case$ -- 72
+            583 strings with 6283 characters,
+and the built_in function-call counts, 3752 in all, are:
+= -- 357
+> -- 201
+< -- 0
++ -- 79
+- -- 68
+* -- 306
+:= -- 664
+add.period$ -- 33
+call.type$ -- 11
+change.case$ -- 66
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 163
-empty$ -- 304
-format.name$ -- 74
-if$ -- 899
+cite$ -- 11
+duplicate$ -- 119
+empty$ -- 268
+format.name$ -- 68
+if$ -- 742
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 11
-newline$ -- 63
-num.names$ -- 24
-pop$ -- 53
+int.to.str$ -- 11
+missing$ -- 10
+newline$ -- 58
+num.names$ -- 22
+pop$ -- 46
 preamble$ -- 1
-purify$ -- 61
+purify$ -- 56
 quote$ -- 0
-skip$ -- 132
+skip$ -- 78
 stack$ -- 0
-substring$ -- 289
-swap$ -- 45
-text.length$ -- 1
+substring$ -- 252
+swap$ -- 11
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 48
+type$ -- 44
 warning$ -- 0
-while$ -- 37
-width$ -- 14
-write$ -- 134
+while$ -- 34
+width$ -- 13
+write$ -- 123
