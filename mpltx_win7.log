@@ -1402,8 +1402,7 @@ Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 98.
 Class revtex4-1 Info: cite was not loaded (OK!) on input line 98.
 Class revtex4-1 Info: mcite was not loaded (OK!) on input line 98.
 Class revtex4-1 Info: multicol was not loaded (OK!) on input line 98.
-
-No file mpltx_win7.aux.
+ (./mpltx_win7.aux)
 \openout1 = `mpltx_win7.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
@@ -1426,7 +1425,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
-ABD: EverySelectfont initializing macros
+ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 98.
 .................................................
 . fontspec info: "setup-math"
@@ -1510,9 +1509,6 @@ LaTeX Info: Redefining \ref on input line 98.
 LaTeX Info: Redefining \pageref on input line 98.
 LaTeX Info: Redefining \nameref on input line 98.
 
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -1593,9 +1589,6 @@ Package natbib Warning: Citation `PhysRevD.94.112002' on page 2 undefined on inp
 
 Package natbib Warning: Citation `PhysRevA.96.042113' on page 2 undefined on input line 125.
 
-
-LaTeX Warning: Reference `fig:cnn' on page 2 undefined on input line 130.
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 136.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1603,20 +1596,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Try loading font information for U+msb on input line 136.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Reference `fig:cjlj' on page 2 undefined on input line 137.
-
-
-LaTeX Warning: Reference `eq:1' on page 2 undefined on input line 138.
-
-
-LaTeX Warning: Reference `eq:2' on page 2 undefined on input line 148.
-
-
-LaTeX Warning: Reference `eq:3' on page 2 undefined on input line 148.
-
-[2]
+) [2]
 File: CNN.png Graphic file (type bmp)
 <CNN.png>
 File: cjlj.png Graphic file (type bmp)
@@ -1627,20 +1607,7 @@ File: cnv.png Graphic file (type bmp)
 <cnv.png>
 File: pool.png Graphic file (type bmp)
 <pool.png>
-
-
-LaTeX Warning: Reference `fig:cnnn' on page 3 undefined on input line 187.
-
-
-LaTeX Warning: Reference `fig:cnv' on page 3 undefined on input line 188.
-
-
-LaTeX Warning: Reference `fig:cnnn' on page 3 undefined on input line 193.
-
-
-LaTeX Warning: Reference `fig:pool' on page 3 undefined on input line 193.
-
-[3] [4]
+ [3] [4]
 
 Package natbib Warning: Citation `1709.05870' on page 5 undefined on input line 198.
 
@@ -1650,9 +1617,6 @@ File: pca.jpg Graphic file (type bmp)
 
 
 Package natbib Warning: Citation `1903.09833' on page 6 undefined on input line 243.
-
-
-LaTeX Warning: Reference `fig:pca' on page 6 undefined on input line 246.
 
 [6]
 
@@ -1670,9 +1634,6 @@ File: QGP.png Graphic file (type bmp)
 File: hz.png Graphic file (type bmp)
 <hz.png>
 
-LaTeX Warning: Reference `fig:QGP' on page 8 undefined on input line 297.
-
-
 Package natbib Warning: Citation `2013PhDT........31Q' on page 8 undefined on input line 297.
 
 
@@ -1680,16 +1641,7 @@ Package natbib Warning: Citation `2010LanB...23..240H' on page 8 undefined on in
 
 [8]
 
-LaTeX Warning: Reference `fig:hz' on page 9 undefined on input line 305.
-
-
-LaTeX Warning: Reference `eq:4' on page 9 undefined on input line 309.
-
-
 Package natbib Warning: Citation `PhysRevC.58.1671' on page 9 undefined on input line 309.
-
-
-LaTeX Warning: Reference `eq:5' on page 9 undefined on input line 317.
 
 
 Package natbib Warning: Citation `PhysRevC.96.024908' on page 9 undefined on input line 317.
@@ -1698,9 +1650,6 @@ Package natbib Warning: Citation `PhysRevC.96.024908' on page 9 undefined on inp
 Package natbib Warning: Citation `PhysRevLett.116.172302' on page 9 undefined on input line 317.
 
 [9]
-
-LaTeX Warning: Reference `fig:fnf' on page 10 undefined on input line 327.
-
 
 Package natbib Warning: Citation `PhysRevC.96.024908' on page 10 undefined on input line 327.
 
@@ -1726,9 +1675,6 @@ File: shape.png Graphic file (type bmp)
 File: angle.png Graphic file (type bmp)
 <angle.png>
 
-LaTeX Warning: Reference `eq:5' on page 14 undefined on input line 441.
-
-
 Package natbib Warning: Citation `PhysRevC.89.064910' on page 14 undefined on input line 445.
 
 [14]
@@ -1738,29 +1684,8 @@ Package natbib Warning: Citation `PhysRevC.72.064901' on page 15 undefined on in
 
 Package natbib Warning: Citation `PhysRevD.44.3501' on page 15 undefined on input line 451.
 
-
-LaTeX Warning: Reference `fig:sample' on page 15 undefined on input line 452.
-
 File: sample.png Graphic file (type bmp)
 <sample.png>
-
-LaTeX Warning: Reference `eq:5' on page 15 undefined on input line 463.
-
-
-LaTeX Warning: Reference `fig:pcasample' on page 15 undefined on input line 463.
-
-
-LaTeX Warning: Reference `fig:pcaresults' on page 15 undefined on input line 464.
-
-
-LaTeX Warning: Reference `fig:tzxl' on page 15 undefined on input line 466.
-
-
-LaTeX Warning: Reference `fig:qb' on page 15 undefined on input line 467.
-
-
-LaTeX Warning: Reference `fig:cs' on page 15 undefined on input line 469.
-
 File: pcasample.png Graphic file (type bmp)
 <pcasample.png>
 File: pcaresults.png Graphic file (type bmp)
@@ -1771,33 +1696,10 @@ File: qb.png Graphic file (type bmp)
 <qb.png>
 File: cs.png Graphic file (type bmp)
 <cs.png>
-[15]
-
-LaTeX Warning: Reference `fig:sjwl' on page 16 undefined on input line 506.
-
-
-LaTeX Warning: Reference `eq:5' on page 16 undefined on input line 507.
-
-
-LaTeX Warning: Reference `fig:sample' on page 16 undefined on input line 507.
-
-[16]
-
-LaTeX Warning: Reference `tab:table1' on page 17 undefined on input line 513.
-
-
-LaTeX Warning: Reference `tab:table2' on page 17 undefined on input line 516.
-
+[15] [16]
 File: sjwl.png Graphic file (type bmp)
 <sjwl.png>
-[17] [18] [19] [20]
-
-LaTeX Warning: Reference `tab:bnn' on page 21 undefined on input line 585.
-
-
-LaTeX Warning: Reference `fig:bnn' on page 21 undefined on input line 587.
-
-
+ [17] [18] [19] [20]
 Underfull \hbox (badness 10000) in paragraph at lines 600--600
 []|\TU/lmr/m/n/12 QGP \TU/FandolSong-Regular(0)/m/n/12 演 化 模 型
  []
@@ -1864,9 +1766,6 @@ Overfull \hbox (27.6656pt too wide) in alignment at lines 592--610
 
 File: bnn.pdf Graphic file (type pdf)
 <use bnn.pdf>
-
-LaTeX Warning: Reference `fig:bnnoutput' on page 21 undefined on input line 619.
-
 File: fig_1.png Graphic file (type bmp)
 <fig_1.png>
 File: fig_2.png Graphic file (type bmp)
@@ -1884,36 +1783,22 @@ File: fig_7.png Graphic file (type bmp)
 File: fig_8.png Graphic file (type bmp)
 <fig_8.png>
 
-LaTeX Warning: Reference `tab:ALICEdata' on page 21 undefined on input line 632.
-
-
 Package natbib Warning: Citation `PhysRevC.94.024907' on page 21 undefined on input line 640.
 
-[21]
-
-LaTeX Warning: Reference `fig:alice' on page 22 undefined on input line 645.
-
-[22]
+[21] [22]
 File: alice.png Graphic file (type bmp)
 <alice.png>
 File: alice_v2.png Graphic file (type bmp)
 <alice_v2.png>
-
-
-LaTeX Warning: Reference `fig:valid' on page 23 undefined on input line 652.
-
 File: v_1.png Graphic file (type bmp)
 <v_1.png>
 File: v_2.png Graphic file (type bmp)
 <v_2.png>
-[23]
+ [23]
 
 Package natbib Warning: Citation `PhysRevC.88.014907' on page 24 undefined on input line 666.
 
 [24]
-
-LaTeX Warning: Reference `eq:decorr' on page 25 undefined on input line 679.
-
 
 Package natbib Warning: Citation `PhysRevD.46.229' on page 25 undefined on input line 688.
 
@@ -1927,68 +1812,24 @@ Package natbib Warning: Citation `PhysRevC.95.064914' on page 25 undefined on in
 Package natbib Warning: Citation `Aaboud2018' on page 25 undefined on input line 698.
 
 [25]
-
-LaTeX Warning: Reference `tab:bu1' on page 26 undefined on input line 708.
-
-
-LaTeX Warning: Reference `fig:bu1d' on page 26 undefined on input line 732.
-
 File: 1d_vp.png Graphic file (type bmp)
 <1d_vp.png>
 File: 1d_vm.png Graphic file (type bmp)
 <1d_vm.png>
 File: 1d_the.png Graphic file (type bmp)
 <1d_the.png>
-[26]
-
-LaTeX Warning: Reference `fig:bu2d' on page 27 undefined on input line 742.
-
+ [26]
 File: 2d_vp_the.png Graphic file (type bmp)
 <2d_vp_the.png>
-
-LaTeX Warning: Reference `fig:bu2dc' on page 27 undefined on input line 748.
-
 File: 2d_vp_the_compare.png Graphic file (type bmp)
 <2d_vp_the_compare.png>
-
-LaTeX Warning: Reference `fig:res2d' on page 27 undefined on input line 754.
-
 File: res.png Graphic file (type bmp)
 <res.png>
-
-LaTeX Warning: Reference `fig:resmat' on page 27 undefined on input line 760.
-
 File: resmat.png Graphic file (type bmp)
 <resmat.png>
-
-LaTeX Warning: Reference `fig:argue' on page 27 undefined on input line 766.
-
 File: argue.png Graphic file (type bmp)
 <argue.png>
-[27]
-
-LaTeX Warning: Reference `fig:bu3d' on page 28 undefined on input line 773.
-
+ [27]
 File: 3d_vp.png Graphic file (type bmp)
 <3d_vp.png>
-File: 3d_vm.png Graphic file (type bmp)
-<3d_vm.png>
-File: 3d_the.png Graphic file (type bmp)
-<3d_the.png>
-[28] [29]
-No file mpltx_win7.bbl.
-*************************************************
-* fontspec warning: "script-not-exist"
-* 
-* Font 'FandolHei-Regular' does not contain script 'CJK'.
-*************************************************
-\g__fontspec_family_FandolHei-Regular_int=\count316
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'FandolHei-Regular(0)' created for font 'FandolHei-Regular' with
-. options [Script={CJK},Extension={.otf},BoldFont={FandolHei-Bold}].
-.  
-.  This font family consists of the following NFSS series/shapes:
-.  
-. - 'normal' (m/n) with NFSS spe
+File: 3d_vm.png Graphic file 
