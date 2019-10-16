@@ -70,10 +70,11 @@
 \usepackage{bookmark}
 \usepackage{setspace}
 \usepackage{subfig}
+\usepackage{url}
 
 %\usepackage[style=alphabetic,maxnames=4,minnames=3,maxbibnames=99]{biblatex}
 %\usepackage{background} %Waterstamp package
-%\SetBgContents{...的实验报告} %Waterstamp to prevent copying
+%\SetBgContents{...的实验报告} %Waterstamp to prevent copyings
 %\SetBgScale{5} %Waterstamp setting
 \hypersetup{colorlinks=true}
 \geometry{top=2.54cm,bottom=2.54cm,left=3cm,right=3cm}
@@ -181,10 +182,10 @@ Loss(y^{p},y^{r})&=-\sum_{i}y_{i}^{r}lny_{i}^{p} \label{eq:3}
 \caption{\label{fig:pool}%
 此图表示了池化层的工作模式}
 \end{figure}
-\subsubsection{卷积神经网络}
+\subsubsection{卷积神经网络}ß
 传统的卷积神经网络(Convolutional Neural 
 Network, CNN)是本文中将要涉及的一类神经网络，其基本结构如图~\ref{fig:cnnn} 所示。可以看到，与之前展示的前馈神经网络相比，二者基本一致，
-只是对于卷积神经网络有两类特殊的层，即卷积层与池化层，下面将简要解释下。对于卷积层，如图~\ref{cnv} ，一个重要的思想就是共享参数。
+只是对于卷积神经网络有两类特殊的层，即卷积层与池化层，下面将简要解释下。对于卷积层，如图~\ref{fig:cnv} ，一个重要的思想就是共享参数。
 前一层为爱因斯坦图像，后一层为四种颜色点所示的一层，这四个点
 与前一层部分点相连，更合理的想法为有一个滤波器存储相关参数，其扫过前一层，按照类似前面所述的层与层间的
 运算规则，会得到新一层，因此，新一层的所有神经元均通过此滤波器上的参数与前一层的部分神经元相连，因此在这两层之间实现了参数共享，
@@ -194,7 +195,7 @@ Network, CNN)是本文中将要涉及的一类神经网络，其基本结构如�
 仅取最大值或取平均值规则来得到下一层，得到的新层即为池化层，按所用规则对应为最大池或平均池。这两种层的优点在于，
 卷积层能够提取出图像中的局部信息，池化层能够压缩数据，防止过拟合等等。
 \subsubsection{贝叶斯神经网络}
-贝叶斯神经网络（Bayesian Neural Network）是基于贝叶斯理论的人工神经网络结构，在面对小样本学习时有独特的优势。\par
+贝叶斯神经网络（Bayesian Neural Network）是基于贝叶斯理论的人工神经网络结构，在面对小样本学习时有独特的优势\cite{1709.05870}。\par
 当我们采用神经网络进行数据拟合时，贝叶斯公式有着如下表述：
 \begin{equation}
     p(W | X, Y)=\frac{p(W) p(Y | X, W)}{p(Y | X)}
@@ -239,7 +240,7 @@ $q(W)$来逼近$p(W)$。\par
 \end{figure}
 
 \subsection{主成分分析}
-主成分分析属于非监督式学习的范畴，下面将简要介绍一下其原理。\par
+主成分分析属于非监督式学习的范畴，在重离子碰撞实验中已经得到了应用\cite{1903.09833}，下面将简要介绍一下其原理。\par
 首先我们指出，我们得到的所有数据都是分布在一定的高维空间之中，但是我们的数据在初始给定的
 这个空间的各个基上一般是相关的，主成分分析的思路即是选择一组新的基，使得数据在这些机上一般
 是相互独立的。如图~\ref{fig:pca} 所示，初始数据是分布在\{$x_{1}$,$x_{2}$\}两个基构成的二维
@@ -253,7 +254,7 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
 在这个基方向上分布的差异性最大，对我们也越有意义，挑出本征值较大的几个基方向，也就是这组数据的主成分。至此，我们便实现
 了主成分分析。
 \subsection{贝叶斯展开}
-贝叶斯展开，是一种数据驱动的，利用贝叶斯公式对分布进行重建的无监督学习方法，在高能物理实验与核物理实验中有着广泛的应用。\par
+贝叶斯展开，是一种数据驱动的，利用贝叶斯公式对分布进行重建的无监督学习方法，在高能物理实验与核物理实验中有着广泛的应用\cite{PhysRevC.88.014907,DAGOSTINI1995487}。\par
 对于某一观测量的分布（或计数），我们都可以（事实上也不得不）利用离散的向量$\vec{d}$来进行刻画，其中，分量$d_i$表示了落入第$i$区间的概率（或计数）。
 类似的，联合分布概率（或计数）可以用矩阵$A$来刻画，分量$A_{ij}$表示落入区间$(i,j)$的概率（或分布）,通过对联合分布矩阵不同维度的归一化，还可以得到条件概率矩阵。\par
 因此，如果我们以$c$标注源（cause）分布，而用$e$标注响应（effect）分布，那么，著名的贝叶斯公式
@@ -264,7 +265,8 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
 在实验上，我们可以直接获得$\vec{e}$，同时根据不同的需求构造$A_{ij}$，例如，在高能实验领域中，可以利用GEANT对探测器进行模拟，进而获得
 基于模型的响应矩阵$A_{ij}$.
 获得了$A_{ij}$与$\vec{e}$后，可以构造如下的迭代流程：\par
-\begin{algorithm}
+\begin{center}
+    \begin{algorithm}
     \SetAlgoLined
     \KwData{$A_{ij},\vec{e}$}
     \KwResult{$\hat{\vec{c}}$: $\vec{c}$的一个估计值}
@@ -276,7 +278,8 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
     $\hat{\vec{c}}$=$\vec{c}^{I}$\;
     \caption{贝叶斯展开的迭代算法}
 \end{algorithm}
-这个迭代步骤最终将会收敛到贴近真实源分布附近，但一般来说，人们并不会令迭代次数过分大，以避免过多迭代带来的误差累积。
+    \end{center}
+这个迭代步骤最终将会收敛到贴近真实源分布附近\cite{DAGOSTINI1995487}，但一般来说，人们并不会令迭代次数过分大，以避免过多迭代带来的误差累积。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=140mm]{QGP}
@@ -302,7 +305,7 @@ $\bm{\bar{x}}=\sum_{i=1}^{n}\bm{x_{i}}$,之后我们可以得到数据在这$m$�
 如图~\ref{fig:hz} 所示，表示的式在垂直粒子数方向上两核子相碰的相关物理量，
 $x-y-z$为实验室坐标系，$x^{'}-y^{'}$为两核子中心连线方向坐标系，其中$x^{'}$与$x$之间
 的夹角为$\psi_{R}$，被称为反应平面角（event plane angle）。$p_{t}$表示最终形成的粒子
-的动量在$x-y$平面上的分量，$\phi$为$p_{t}$在$x-y$平面内的方位角，赝快度$\eta=\operatorname¡{arctanh}(\frac{p_{z}}{|p|})$
+的动量在$x-y$平面上的分量，$\phi$为$p_{t}$在$x-y$平面内的方位角，赝快度$\eta=\operatorname{arctanh}(\frac{p_{z}}{|p|})$
 用于表示粒子在$z$方向上分布性质。因此，粒子的产额可用式~\ref{eq:4} 表示\cite{PhysRevC.58.1671}。
 \begin{equation}
 E\frac{d^{3}N}{dp^{3}}=\frac{1}{2\pi}\frac{d^{2}N}{p_{t}dp_{t}d\eta}(1+\sum_{i=1}^{\infty}2v_{n}cos(n(\phi-\psi_{R}))) \label{eq:4}
@@ -311,7 +314,7 @@ E\frac{d^{3}N}{dp^{3}}=\frac{1}{2\pi}\frac{d^{2}N}{p_{t}dp_{t}d\eta}(1+\sum_{i=1
 各阶流，既可以间接研究碰撞时的相关物理过程。研究各阶流的方法有很多，一般有事件平面法，二粒子和多粒子关联法，
 子事件方法等。本文在研究时用到的方法是二粒子关联函数法，下面简要介绍下。
 \subsection{二粒子关联函数法}
-二粒子关联函数的定义如式~\ref{eq:5} 所示\citet{PhysRevC.96.024908,PhysRevLett.116.172302}，其中自变量$\Delta\phi$、$\Delta\eta$分别表示两粒子的方位角$\phi$与
+二粒子关联函数的定义如式~\ref{eq:5} 所示\cite{PhysRevC.96.024908,PhysRevLett.116.172302}，其中自变量$\Delta\phi$、$\Delta\eta$分别表示两粒子的方位角$\phi$与
 赝快度$\eta$的差值。同时$S(\Delta\phi,\Delta\eta)$是同一碰撞事件所有粒子对在（$\Delta\phi$，$\Delta\eta$）空间
 上的分布，其中包含了所有的关联，即既包含了物理上的关联，也包含了非物理的关联。而$B(\Delta\phi,\Delta\eta)$是背景
 的分布，其来源于两个不同碰撞事件的粒子对在（$\Delta\phi$，$\Delta\eta$）空间上的分布，其中只包含非物理的关联。同时
@@ -321,7 +324,7 @@ E\frac{d^{3}N}{dp^{3}}=\frac{1}{2\pi}\frac{d^{2}N}{p_{t}dp_{t}d\eta}(1+\sum_{i=1
 C(\Delta\phi,\Delta\eta)=\frac{\sum_{events}S(\Delta\phi,\Delta\eta)}{\sum_{events}B(\Delta\phi,\Delta\eta)} \label{eq:5}
 \end{equation}
 \par
-如图~\ref{fig:fnf} 所示\citet{PhysRevC.96.024908}，左图表示的是非流事件的示意图，右图表示的是流事件的示意图。可以看到非流时间仅有在$\Delta\phi=0,\Delta\eta=0$
+如图~\ref{fig:fnf} 所示\cite{PhysRevC.96.024908}，左图表示的是非流事件的示意图，右图表示的是流事件的示意图。可以看到非流事件仅有在$\Delta\phi=0,\Delta\eta=0$
 处的尖峰结构以及在$\Delta\phi=\pi$处的脊结构，而对于流事件，还存在$\Delta\phi=0$处的脊结构，这被称为流事件中的双脊结构，
 而这也是区分流与非流事件的一个很重要的特征。
 \begin{figure}[htbp]
@@ -333,7 +336,12 @@ C(\Delta\phi,\Delta\eta)=\frac{\sum_{events}S(\Delta\phi,\Delta\eta)}{\sum_{even
 \subsection{相对论性重离子碰撞的一种建模方式}
 在相对论性重离子碰撞中，有许多成功的模型，都可以与实验数据保持良好的一致性。而在我们的课题研究中，主要采用了TRENTO+VISHNU的联合建模方式。
 \subsubsection{逐事件约化厚度核拓扑模型（TRENTO）}
-逐事件约化厚度核拓扑模型，是一个简约，计算迅速的相对论性核碰撞（质子对撞，质子重核对撞，重核对撞）初态模型。
+逐事件约化厚度核拓扑模型\cite{PhysRevC.92.011901}，是一个简约，计算迅速的相对论性核碰撞（质子对撞，质子重核对撞，重核对撞）初态模型。
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=140mm]{trento}
+\caption{利用TRENTO产生的铅核对撞初态\label{fig:trento}}%
+\end{figure}
 \par
 相对论性重离子碰撞领域中已经存在许多成功的初态模型，动力学模型有基于色玻璃凝聚有效场论的基于碰撞参数的Glasma模型（IP-Glasma）,静态模型则有蒙特卡洛Glauber模型（MC-Glauber），都各自成功的解释了实验数据。而逐事件约化厚度核拓扑模型，则可以通过模型参数的选取，分别贴近不同的初态模型。
 \par
@@ -400,7 +408,7 @@ T_{R}=\left\{\begin{array}{ll}{\max \left(T_{A}, T_{B}\right)} & {p \rightarrow+
 对于含有许多核子的重核，可以通过引入Woods-Saxon势的限制等，配置核子位置，再将单核子的约化厚度混合。
 \subsubsection{混合粘性流体力学模型（VISHNU）}
 相对论性重离子碰撞的演化过程可分为不同的阶段，在利用TRENTO产生初始条件之后，还需要经过相对论性粘性流体力学演化，强子化及输运等过程。
-幸运的是，已经存在一个能够完整描述这一过程的混合模型VISHNU，它在演化的不同阶段调用不同的模型，最终完成对整个演化过程的描述。\par
+幸运的是，已经存在一个能够完整描述这一过程的混合模型VISHNU\cite{Shen:2014vra}，它在演化的不同阶段调用不同的模型，最终完成对整个演化过程的描述。\par
 VISHNU在不同的阶段调用的模型分别是VISH2+1,iSS,UrQMD.
 \begin{enumerate}
     \item VISH2+1: 对于相对论性重离子碰撞，从实验数据来看，演化过程在快度方向有着很好的平移不变性；因此，一个“2+1”（动量二维，时间一维）的流体力学演化可以
@@ -411,7 +419,14 @@ VISHNU在不同的阶段调用的模型分别是VISH2+1,iSS,UrQMD.
     \item UrQMD：产生强子后，还需要建模强子的输运过程。在VISHNU中，极端相对论性分子动力学模型（即UrQMD），利用蒙特卡洛方法求解玻尔兹曼方程，完成了对于强子输运过程的建模。
 \end{enumerate}
 \subsection{相对论性重离子碰撞中的长程解关联行为}
-近年来，相对论性重离子碰撞领域中的一大研究热点，是长程关联中的解关联行为。\par
+近年来，相对论性重离子碰撞领域中的一大研究热点，是长程关联中的解关联行为\cite{PhysRevC.95.064914}。
+\begin{figure}[htbp]
+    \centering
+    \subfloat[粒子多重数解关联]{\includegraphics[width=0.3\textwidth]{mult.png}}
+    \subfloat[形状解关联]{\includegraphics[width=0.3\textwidth]{shape.png}}
+    \subfloat[相角解关联]{\includegraphics[width=0.3\textwidth]{angle.png}}
+    \caption{长程解关联行为示意\label{fig:de}}%
+    \end{figure}\par
 在重离子碰撞中，长程这一称谓指的是快度方向的行为，如前所述，实验数据显示快度方向有着很好的平移对称不变性，换而言之，不同快度区间内的粒子分布有着很强的关联性。\par
 但是随着实验数据的积累，在涨落幅度被压低后，人们意识到在快度方向也存在着解关联行为，并且不全是因为涨落导致。因此，对于这一解关联现象的研究逐渐成为热点。\par
 由于解关联行为强度不高，实验上一般采用如下的一阶近似：
@@ -495,10 +510,10 @@ Hijing，Trento2030\footnote{图中表示为Karpenko}，Ampt(39Gev)，Ampt(200Ge
 输出层输出。在整个过程中，除输出层所用激活函数为Softmax外，其余均为Relu。所用损失函数为交叉熵损失函数。\par
 训练网络时，首先我们选择仅用一个流模型与非流模型的100个事件平均后的数据各5000组作为训练集，之后用所有的模型下的100个
 事件平均后的各10000组数据作为测试集来测试网络的结果，测试的准确度是指，网络输出正确标签的组数占总组数的百分比。
-得到的结果如表~\ref{table:1} 所示，可以看出，仅用一种流与非流模型作为训练集的话，总会有个别模型的结果表现十分差，这表明我们的输入数据不足，使得网络
+得到的结果如表~\ref{tab:table1} 所示，可以看出，仅用一种流与非流模型作为训练集的话，总会有个别模型的结果表现十分差，这表明我们的输入数据不足，使得网络
 并未学到流与非流之间本质区别。\par
 之后将所有流与非流模型的数据均作为训练集，
-得到的结果如表~\ref{table:2} 所示，可以看出，在我们用所有的流与非流模型作为训练后，网络可以在测试集上的表现十分好，
+得到的结果如表~\ref{tab:table2} 所示，可以看出，在我们用所有的流与非流模型作为训练后，网络可以在测试集上的表现十分好，
 同时我们研究了在不同事件平均下网络的表现结果，即对涨落压制在程度强弱下，网络的表现结果，可以看出，在1000、100、50个事件平均下，网络的表现都十分
 良好，这表明，涨落在对于网络的分辨本领影响并不是十分巨大，只要在一定的事件数平均下，对涨落造成了一定程度上的抑制，网络
 就可以得到一个比较好的表现结果。
@@ -622,7 +637,7 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
 参数&$\mathrm{N}$&$p$&$w$&$k$&$\eta/s_{slope}$&$\eta/s_{min}$&$\zeta/s_{norm}$&$T_{switch}$\\
 \colrule
 神经网络给出拟合&120。5&0&1.47&0.47&0.86&0.10&1.29&0.153\\
-最佳拟合&120&0&1.5&0.43&0.85&0.08&1.25&0.148
+最佳拟合\cite{PhysRevC.94.024907}&120&0&1.5&0.43&0.85&0.08&1.25&0.148
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -648,7 +663,7 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
     \item 问题提出与定义：\par
     在相对论性重离子碰撞领域的实验数据处理中，一个重要的问题是如何减少探测器的影响。探测器不仅仅会带来效率上的损失，有时往往还伴随着随机噪声，使本来狭窄的信号分布展宽。而在对集体流效应的研究中，压低非流信号的影响也十分重要。
     \par
-    处理积分流时（在$\eta$方向进行积分，而前向后向的分布应当是完全相关的）贝叶斯展开有着很好的表现，可以同时完成上述功能。\par
+    处理积分流时（在$\eta$方向进行积分，而前向后向的分布应当是完全相关的）贝叶斯展开有着很好的表现，可以同时完成上述功能\cite{PhysRevC.88.014907}。\par
     但是，如果要利用贝叶斯展开研究集体流长程解关联行为，问题就会变得非常复杂。
     \begin{enumerate}
         \item 集体流的解关联行为不仅表现在集体流矢量的幅度上，也表现在集体流矢量的形状和相位上。因此，若要描述整个体系，需要一个高维的相空间。而高维的相空间所消耗的计算资源将十分巨大，行为也会更加混乱。
@@ -670,7 +685,7 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
             \end{aligned}
         \end{equation}
         \item 即使我们的模型非常简单，我们仍希望这一模型能够尽量符合实验上的观测，因而仔细设计了数据的产生：\par
-        在真实的相对论性重离子碰撞实验中，我们需要处理的事件数目十分巨大，因此，可以利用中心极限定理。对于上述矢量，均可以处理成二维高斯分布，相应的，模长应该符合贝塞尔高斯分布。举例来说，集体流矢量幅度的分布应该满足贝塞尔高斯分布，形式如下：\par
+        在真实的相对论性重离子碰撞实验中，我们需要处理的事件数目十分巨大，因此，可以利用中心极限定理。对于上述矢量，均可以处理成二维高斯分布，相应的，模长应该符合贝塞尔高斯分布。举例来说，集体流矢量幅度的分布应该满足贝塞尔高斯分布\cite{PhysRevD.46.229,VOLOSHIN2008537}，形式如下：\par
         \begin{equation}
             p\left(v_{n}^{\mathrm{obs}} | v_{n}\right) \approx \frac{1}{2 \pi \delta_{n}^{2}} v_{n}^{\mathrm{obs}} e^{-\frac{\left(v_{n}^{\mathrm{obs}}\right)^{2}+v_{n}^{2}}{2 \delta_{n}^{2}}} I_{0}\left(\frac{v_{n}^{\mathrm{obs}} v_{n}}{\delta_{n}^{2}}\right)
         \end{equation}
@@ -680,7 +695,7 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
         \begin{equation}
             F=\frac{\langle v_1v_2^*\rangle}{\langle|v_0|^2\rangle}
         \end{equation}
-        使之与实验上的解关联效应相仿。
+        使之与实验上的解关联效应相仿\cite{PhysRevC.95.064914,Aaboud2018}。
         \item 在实施贝叶斯展开的时候，需要预先选择两个合理的先验分布，其一是产生迁移矩阵（条件概率）的分布，其二是进行迭代的分布。\par
         迁移矩阵的分布要求不能过宽，否则需要大量的抽样以压低涨落，亦不能过窄，因为从数值上看，
         $A_{ij}=0$，既可能是条件概率为零，也可能是先验分布为零，两者无法区分，故而这一先验分布应该涵盖目标分布所有可能的相空间范围，同时尽可能狭窄。\par
@@ -736,7 +751,7 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
         \includegraphics[width=140mm]{2d_vp_the_compare.png}
         \caption{平均模长和夹角大小的联合分布的贝叶斯展开结果\label{fig:bu2dc}}%
         \end{figure}
-    热图的缺陷是难以给人以直观的定量感受，因而我们绘制了绝对残差和相对残差的热力图。\ref{fig:res2d}\par
+    热图的缺陷是难以给人以直观的定量感受，因而我们绘制了绝对残差和相对残差的热力图\ref{fig:res2d}。\par
     \begin{figure}[htbp]
         \centering
         \includegraphics[width=140mm]{res.png}
@@ -794,11 +809,10 @@ $K^{\pm},\pi^{\pm},p\bar{p}$的横向动量平均值$\langle p_{T}\rangle$&末�
 %\bibliography{S0010465514002537}
 %\bibliography{PhysRevD.44.3501}
 %\bibliography{10.1007_JHEP05(2018)006}
-%\bibliography{S037026931630747X}
+%\bibliography{S037026931630747X}ß
 %\bibliography{10.1007_JHEP02(2016)156}
 %\bibliography{PhysRevLett.116.172302}
 %\bibliography{PhysRevC.89.064910}
-
 
 
 \section{\heiti\zihao{-4}作者简介}
